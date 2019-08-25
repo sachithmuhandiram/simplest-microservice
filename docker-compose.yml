@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  addmodule:
+    image: addmodule
+    build:
+      context: ./addmodule
+      dockerfile: Dockerfile
+    depends_on:
+      - mainmodule
+  
+  mainmodule:
+    image : mainmodule
+    build:
+      context: ./mainmodule
+      dockerfile: Dockerfile
