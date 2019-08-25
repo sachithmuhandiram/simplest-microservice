@@ -6,11 +6,11 @@ services:
     build:
       context: ./addmodule
       dockerfile: Dockerfile
-    depends_on:
-      - mainmodule
   
   mainmodule:
     image : mainmodule
     build:
       context: ./mainmodule
       dockerfile: Dockerfile
+    depends_on:
+      - addmodule

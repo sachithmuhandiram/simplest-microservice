@@ -8,7 +8,7 @@ import (
 func main() {
 	log.Println("From main package")
 
-	res, err := http.Get("addmodule:7070/add")
+	res, err := http.Get("http://addmodule:7070/add")
 
 	if err != nil {
 		log.Println("couldnt send get request")
