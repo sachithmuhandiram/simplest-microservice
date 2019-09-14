@@ -6,4 +6,9 @@ COPY . /go/src
 
 WORKDIR /go/src
 
-CMD [ "go","run","main.go" ]
+RUN go build -o main .
+
+EXPOSE 7171
+
+RUN chmod 755 main
+CMD [ "./main" ]
