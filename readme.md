@@ -24,12 +24,13 @@ API gateway and other services will be developed using minimal 3rd party package
 
 * All containers must be in the same network. `network_mode: "host"`, Otherwise it will give 
 
-> Get http://container1:port/: dial tcp 0.0.0.0:port: connect: connection refused
+    > Get http://container1:port/: dial tcp 0.0.0.0:port: connect: connection refused
 
 * Microservice containers should be running on `0.0.0.0`. [The host binding to 0.0.0.0 instead of localhost](https://chat.stackoverflow.com/rooms/198447/discussion-between-maartendev-and-sachith)
 
-Eg : `http.ListenAndServe("0.0.0.0:7070", nil)`
+    Eg : `http.ListenAndServe("0.0.0.0:7070", nil)`
 
 * Add microservice name and IP to `/etc/hosts`.[connecting to docker with curl](https://stackoverflow.com/questions/41887775/connecting-to-docker-with-curl/41895590#41895590)
-Eg:
-`0.0.0.0        addmodule`
+
+    Eg:
+    `0.0.0.0        addmodule`
