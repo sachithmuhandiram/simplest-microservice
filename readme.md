@@ -2,7 +2,7 @@
 
 Here I am developing a simple microservice based system using `golang`.
 
-This system has and API gateway (mainmodule) and four microservices,
+This system has an API gateway (mainmodule) and four microservices,
    * Add (addmodule)
    * Substraction 
    * Divide
