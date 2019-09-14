@@ -21,5 +21,5 @@ func add(res http.ResponseWriter, req *http.Request) {
 		log.Println("Couldnt send request to add module", err)
 	}
 
-	log.Println(add)
+	log.Println(add) // Just to verify we gets a response
 }

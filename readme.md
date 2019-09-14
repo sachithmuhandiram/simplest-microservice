@@ -30,7 +30,14 @@ API gateway and other services will be developed using minimal 3rd party package
 
     Eg : `http.ListenAndServe("0.0.0.0:7070", nil)`
 
-* Add microservice name and IP to `/etc/hosts`.[connecting to docker with curl](https://stackoverflow.com/questions/41887775/connecting-to-docker-with-curl/41895590#41895590)
+* Add microservice name and IP to `/etc/hosts`. [Connecting to docker with curl](https://stackoverflow.com/questions/41887775/connecting-to-docker-with-curl/41895590#41895590)
 
     Eg:
     `0.0.0.0        addmodule`
+
+
+### How to run
+
+`git clone https://github.com/sachithmuhandiram/simplest-microservice.git`
+
+`sudo docker-compose up --build`
