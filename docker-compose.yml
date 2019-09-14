@@ -6,11 +6,13 @@ services:
     build:
       context: ./addmodule
       dockerfile: Dockerfile
-  
+    network_mode: "host"
+
   mainmodule:
     image : mainmodule
     build:
       context: ./mainmodule
       dockerfile: Dockerfile
+    network_mode: "host"
     depends_on:
       - addmodule

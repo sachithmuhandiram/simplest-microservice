@@ -5,12 +5,12 @@ import (
 	"net/http"
 )
 
-func add(reswt http.ResponseWriter, req *http.Request) {
-	log.Println("Request came to here")
+func add(res http.ResponseWriter, req *http.Request) {
+	log.Println("Request came to addmodule container")
 }
 
 func main() {
-	log.Println("started addmodule")
+	log.Println("Started addmodule")
 	http.HandleFunc("/add", add)
 	err := http.ListenAndServe("0.0.0.0:7070", nil)
 
