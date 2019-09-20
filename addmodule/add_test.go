@@ -9,7 +9,7 @@ import (
 )
 
 func TestAdd(t *testing.T) {
-	req, resErr := http.NewRequest("GET", "/add?num1=5", nil)
+	req, resErr := http.NewRequest("GET", "http://addmodule:7070/add?num1=5", nil)
 
 	if resErr != nil {
 		t.Fatalf("Couldnt create GET request : %v", resErr)
@@ -17,9 +17,9 @@ func TestAdd(t *testing.T) {
 
 	w := httptest.NewRecorder()
 
-	Add(w, req)
+	add(w, req)
 
-	res := w.Result()
+	res := w.Result() // response from Add function
 
 	if res.StatusCode != http.StatusOK {
 		t.Errorf("Expected result ok. got %v: ", res.Status)
@@ -33,13 +33,13 @@ func TestAdd(t *testing.T) {
 		t.Fatalf("Could not read response : %v", err)
 	}
 
-	data, _ := strconv.Atoi(string(bs))
+	data, err := strconv.Atoi(string(bs))
 
-	// if err != nil {
-	// 	t.Fatalf("expected an integer, got : %s", err)
-	// }
+	if err != nil {
+		t.Fatalf("Failed to convert BS to int : %v", err)
+	}
 
-	if data != 8 {
-		t.Fatalf("Expected 9, got %v", data)
+	if data != 10 {
+		t.Fatalf("Expected 10, got %v", data)
 	}
 }
