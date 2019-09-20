@@ -35,9 +35,19 @@ API gateway and other services will be developed using minimal 3rd party package
     Eg:
     `0.0.0.0        addmodule`
 
+## To Do
+
+- [ ] 2 phase builds of docker images. As I use four alpine:golang instances.
+- [ ] API gateway functionalities one by one.
+    - [ ] - Implementing circuite-braker pattern
+    - [ ] - Service Descovery
+    - [ ] - Security (http requests etc)
+    - [ ] - Logical expression parsing
 
 ### How to run
 
 `git clone https://github.com/sachithmuhandiram/simplest-microservice.git`
 
 `sudo docker-compose up --build`
+
+https://www.reddit.com/r/golang/comments/cweswg/golang_part_time_developer_beginners_level/ 

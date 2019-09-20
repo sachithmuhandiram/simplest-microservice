@@ -7,6 +7,27 @@ services:
       context: ./addmodule
       dockerfile: Dockerfile
     network_mode: "host"
+  
+  submodule:
+    image: submodule
+    build:
+      context: ./submodule
+      dockerfile: Dockerfile
+    network_mode: "host"
+
+  divmodule:
+    image: divmodule
+    build:
+      context: ./divmodule
+      dockerfile: Dockerfile
+    network_mode: "host" 
+
+  mulmodule:
+    image: mulmodule
+    build:
+      context: ./mulmodule
+      dockerfile: Dockerfile
+    network_mode: "host"
 
   mainmodule:
     image : mainmodule
@@ -16,3 +37,6 @@ services:
     network_mode: "host"
     depends_on:
       - addmodule
+      - submodule
+      - divmodule
+      - mulmodule
