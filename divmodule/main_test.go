@@ -8,21 +8,22 @@ import (
 	"testing"
 )
 
-func TestAdd(t *testing.T) {
-	req, resErr := http.NewRequest("GET", "http://addmodule:7070/add?num1=5&num2=4", nil)
+func TestDiv(t *testing.T) {
+
+	req, resErr := http.NewRequest("GET", "http://divmodule:7072/div?num1=11&num2=2", nil)
 
 	if resErr != nil {
-		t.Fatalf("Couldnt create GET request : %v", resErr)
+		t.Log("NewRequest couldnt handle GET to div module ")
 	}
 
 	w := httptest.NewRecorder()
 
-	add(w, req)
+	div(w, req)
 
 	res := w.Result() // response from Add function
 
 	if res.StatusCode != http.StatusOK {
-		t.Errorf("Expected result ok. got %v: ", res.Status)
+		t.Errorf("Expected result ok. got %v from div module ", res.Status)
 	}
 
 	bs, err := ioutil.ReadAll(res.Body)
@@ -30,7 +31,7 @@ func TestAdd(t *testing.T) {
 	defer res.Body.Close()
 
 	if err != nil {
-		t.Fatalf("Could not read response : %v", err)
+		t.Fatalf("Could not read response from div module: %v", err)
 	}
 
 	data, err := strconv.Atoi(string(bs))
@@ -39,7 +40,8 @@ func TestAdd(t *testing.T) {
 		t.Fatalf("Failed to convert BS to int : %v", err)
 	}
 
-	if data != 9 {
-		t.Fatalf("Expected 10, got %v", data)
+	if data != 5 {
+		t.Fatalf("Expected 5, got %v", data)
 	}
+
 }
