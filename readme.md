@@ -37,6 +37,7 @@ API gateway and other services will be developed using minimal 3rd party package
 
 ## To Do
 
+- [ ] Add Unit tests for each module
 - [ ] 2 phase builds of docker images. As I use four alpine:golang instances.
 - [ ] API gateway functionalities one by one.
     - [ ] - Implementing circuite-braker pattern
