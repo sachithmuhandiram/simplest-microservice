@@ -17,8 +17,11 @@ func main() {
 }
 
 func add(res http.ResponseWriter, req *http.Request) {
+	/*
+		This is the place need to fix. GET request cant get strings converted from int
+	*/
 
-	add, err := http.Get("http://addmodule:7070/add")
+	add, err := http.Get("http://addmodule:7070/add?num1=10&num2=2")
 
 	if err != nil {
 		log.Println("Couldnt send request to add module", err)

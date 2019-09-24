@@ -31,5 +31,6 @@ func add(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	log.Println("Answer is : ", n1+n2)
 	fmt.Fprint(res, n1+n2)
 }
