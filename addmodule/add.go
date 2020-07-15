@@ -22,7 +22,7 @@ func add(res http.ResponseWriter, req *http.Request) {
 
 	num1 := req.FormValue("num1")
 	num2 := req.FormValue("num2")
-
+	log.Println(num1, num2)
 	n1, n1Err := strconv.Atoi(num1) // converts string to int
 	n2, n2Err := strconv.Atoi(num2)
 

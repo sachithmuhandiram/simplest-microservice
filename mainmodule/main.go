@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"net/url"
 )
 
 func main() {
@@ -20,8 +21,9 @@ func add(res http.ResponseWriter, req *http.Request) {
 	/*
 		This is the place need to fix. GET request cant get strings converted from int
 	*/
-
-	add, err := http.Get("http://addmodule:7070/add?num1=10&num2=2")
+	num1 := req.FormValue("num1")
+	num2 := req.FormValue("num2")
+	add, err := http.PostForm("http://addmodule:7070/add", url.Values{"num1": {num1}, "num2": {num2}})
 
 	if err != nil {
 		log.Println("Couldnt send request to add module", err)
