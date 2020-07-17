@@ -1,6 +1,6 @@
-FROM golang:alpine
+FROM golang:stretch
 
-RUN apk update
+RUN apt update
 
 COPY . /go/src
 
