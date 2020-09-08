@@ -1,10 +1,18 @@
 package main
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
+	"strconv"
 )
+
+type userInput struct {
+	Num1 int `json:"num1"`
+	Num2 int `json:"num2"`
+}
 
 func main() {
 	log.Println("Starting main module")
@@ -21,9 +29,25 @@ func add(res http.ResponseWriter, req *http.Request) {
 	/*
 		This is the place need to fix. GET request cant get strings converted from int
 	*/
-	num1 := req.FormValue("num1")
-	num2 := req.FormValue("num2")
-	add, err := http.PostForm("http://addmodule:7070/add", url.Values{"num1": {num1}, "num2": {num2}})
+	body, readErr := ioutil.ReadAll(req.Body)
+	if readErr != nil {
+		log.Println(readErr)
+	}
+
+	userIn := userInput{}
+	jsonErr := json.Unmarshal(body, &userIn)
+	if jsonErr != nil {
+		log.Println(jsonErr)
+	}
+
+	// fmt.Println(userIn.Num1)
+	// fmt.Println(userIn.Num2)
+	num1 := userIn.Num1 //req.FormValue("num1")
+	num2 := userIn.Num2 //req.FormValue("num2")
+
+	numNew1 := strconv.Itoa(num1)
+	numNew2 := strconv.Itoa(num2)
+	add, err := http.PostForm("http://addmodule:7070/add", url.Values{"num1": {numNew1}, "num2": {numNew2}})
 
 	if err != nil {
 		log.Println("Couldnt send request to add module", err)
