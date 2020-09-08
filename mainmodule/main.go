@@ -45,6 +45,8 @@ func add(res http.ResponseWriter, req *http.Request) {
 	num1 := userIn.Num1 //req.FormValue("num1")
 	num2 := userIn.Num2 //req.FormValue("num2")
 
+	log.Println("Num1", num1)
+	log.Println("Num2", num2)
 	numNew1 := strconv.Itoa(num1)
 	numNew2 := strconv.Itoa(num2)
 	add, err := http.PostForm("http://addmodule:7070/add", url.Values{"num1": {numNew1}, "num2": {numNew2}})
